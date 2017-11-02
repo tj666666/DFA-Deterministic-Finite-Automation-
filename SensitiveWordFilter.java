@@ -12,7 +12,7 @@ import java.util.Set;
  * @since jdk 1.8.0_65
  * @Description:敏感词过滤
  */
-public class SensitiveWordFileter {
+public class SensitiveWordFilter {
 
 	private Map sensitiveWordMap = null;
 	public static int minMatchType = 1;	//最小匹配规则
@@ -21,7 +21,7 @@ public class SensitiveWordFileter {
 	/**
 	 * 构造函数,读取敏感词文件,初始化敏感词汇
 	 */
-	public SensitiveWordFileter() {
+	public SensitiveWordFilter() {
 		sensitiveWordMap = new SensitieWordInit().initKeyword();
 	}
 	/**
@@ -44,7 +44,7 @@ public class SensitiveWordFileter {
 				matchFlag++;
 				if("1".equals(tempMap.get("isEnd"))) {	//如果为最后一个匹配词,则结束循环,返回匹配标识符
 					endFlag = true;
-					if(SensitiveWordFileter.minMatchType == matchType) {	//最小规则直接返回,最大规则还需要继续查找
+					if(SensitiveWordFilter.minMatchType == matchType) {	//最小规则直接返回,最大规则还需要继续查找
 						break;
 					}
 				}
@@ -130,7 +130,7 @@ public class SensitiveWordFileter {
 	}
 	
 	public static void main(String[] args) {
-		SensitiveWordFileter fileter = new SensitiveWordFileter();
+		SensitiveWordFilter fileter = new SensitiveWordFilter();
 		System.out.println("敏感词数量: "+fileter.sensitiveWordMap.size());
 		String string = "枪械炸药硝铵火药燃烧瓶做证件太多的伤感情怀也许只局限于饲养基地 荧幕中的情节，主人公尝试着去用某种方式渐渐的很潇洒地释自杀指南怀那些自己经历的伤感。"
 				+ "办理证件然后法轮功 我们的扮演的角色就是跟随着主人公的喜红客联盟 怒哀乐而过于牵强的把自己的情感也附加于银幕情节中，然后感动就流泪，"
